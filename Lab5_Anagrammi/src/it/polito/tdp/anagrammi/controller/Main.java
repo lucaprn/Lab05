@@ -14,7 +14,7 @@ public class Main extends Application {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("Anagrammi.fxml")) ;
 			BorderPane root = (BorderPane)loader.load();
 		
-			Scene scene = new Scene(root,400,400);
+			Scene scene = new Scene(root,600,469);
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
