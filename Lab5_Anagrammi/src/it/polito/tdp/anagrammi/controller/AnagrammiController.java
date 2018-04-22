@@ -6,6 +6,9 @@ package it.polito.tdp.anagrammi.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import it.polito.tdp.anagrammi.model.Anagramma;
+import it.polito.tdp.anagrammi.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,6 +16,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class AnagrammiController {
+	
+	Model model = new Model();
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -37,11 +42,22 @@ public class AnagrammiController {
 
     @FXML
     void DoCalcola(ActionEvent event) {
+    	this.model.resetAnagrammi();
+    	String input = this.txtInput.getText().toLowerCase();
+    	this.model.calcolaAnagrammi(input, new Anagramma(), 0);
+    	this.txtCorretti.clear();
+    	this.txtErrati.clear();
+    	this.txtCorretti.appendText(this.model.getAnagrammiValidi());
+    	this.txtErrati.appendText(this.model.getAnagrammiNonValidi());
 
     }
 
     @FXML
     void DoReset(ActionEvent event) {
+    	
+    	this.txtCorretti.clear();
+    	this.txtErrati.clear();
+    	this.txtInput.clear();
 
     }
 
